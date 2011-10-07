@@ -814,37 +814,37 @@ ul.browse li.b07 a:hover {
 	padding-left: 5px;
 }
 
-.follow {
+div.follow {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #eee;
 }
 
-.follow .user {
+div.follow .user {
 	float: left;
 	width: 50px;
 }
 
-.follow .btn {
+div.follow .btn {
 	float: right;
 }
 
-.follow dl {
+div.follow dl {
 	padding-left: 60px;
 	padding-right: 110px;
 }
 
-.follow dt {
+div.follow dt {
 	font-weight: bold;
 	font-size: 14px;
 }
 
-.follow dt img {
+div.follow dt img {
 	vertical-align: -2px;
 	margin-left: 5px;
 }
 
-.follow dd {
+div.follow dd {
 	font-size: 0.7em;
 	color: #666;
 	line-height: 1.2;
@@ -1975,6 +1975,82 @@ p.btn_follow a:hover {
 
 .side .edit_design a:hover {
 	background-position: 0 -15px;
+}
+
+
+
+/* @end */
+
+/* @group ***front_single_form*** */
+
+.frontpage .comment_form {
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+
+.frontpage .comment_form dl {
+	width: 500px;
+	height: 75px;
+	position: relative;
+}
+
+.frontpage .comment_form dt {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.frontpage .comment_form dt .txtarea {
+	width: 400px;
+	height: 5em;
+	overflow-y: auto;
+}
+
+.frontpage .comment_form dd {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.frontpage .comment_list {
+	border-top: 1px dotted #ddd;
+	padding-top: 0.5em;
+}
+
+.frontpage .comment_list li {
+	border-bottom: 1px dotted #ddd;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	clear: both;
+}
+
+.frontpage .comment_list li p {
+	padding-top: 0;
+	padding-bottom: 5px;
+	line-height: 24px;
+}
+
+.frontpage .comment_list li p span {
+	padding-left: 5px;
+	color: #555;
+}
+
+.frontpage .comment_list li span.msg {
+	font-size: 0.9em;
+}
+
+.frontpage .favorite {
+	padding-top: 50px;
+}
+
+.frontpage .favorite .favorite_list li {
+	line-height: 16px;
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+}
+
+.frontpage .favorite .favorite_list li img {
+	padding-right: 5px;
 }
 
 
