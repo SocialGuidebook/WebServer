@@ -1,0 +1,4 @@
+<% comments.each do |comment|%>
+  <h3><%= link_to comment.user.name, user_path(comment.user) %></h3>
+  <%= comment.body %>
+<% end %>

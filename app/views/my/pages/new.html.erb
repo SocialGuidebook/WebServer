@@ -1,0 +1,47 @@
+<%= javascript_include_tag "https://www.google.com/jsapi?key=#{get_google_loader_key}" %>
+<script type="text/coffeescript">
+  $ ->
+    if google.loader.ClientLocation && google.loader.ClientLocation.address && google.loader.ClientLocation.address.country
+      $('#page_country').val google.loader.ClientLocation.address.country
+</script>
+
+<script type="text/javascript">
+  function set_position(id, p){
+    $("#page_" + id + "_latitude").val(p.lat());
+    $("#page_" + id + "_longitude").val(p.lng());
+    $("#page_" + id + "_latitude_label").text(p.lat());
+    $("#page_" + id + "_longitude_label").text(p.lng());
+  }
+</script>
+
+<div id="div-process" style="display:none;">Processing request&hellip;</div>
+<div id="cont">
+  <div id="head">
+    <h1><%= link_to "Social Guidebook", my_root_path %></h1>
+    <ul id="nav">
+      <li><%= link_to "View Top page", root_path %></li>
+      <li><%= link_to "Log out", "/signout", :method => :delete %></li>
+    </ul>
+  </div>
+  <div id="main">
+    <%= raw(GMap.header(:host => request.host)) %>
+    <script type="text/javascript">
+      var <%= @page.marker_id %>;
+      var gGeo = new GClientGeocoder();
+    </script>
+    <div class="box">
+      <ul class="menu">
+	<h3>New Page</h3>
+      </ul>
+      <p>&nbsp;</p>
+      <span id="new_form">
+        <%= render :partial => "form" %>
+      </span>
+      <div class="footer-box">&nbsp;</div>
+    </div>
+  </div>
+  <div id="foot">
+    <a href="http://www.gelatocms.com/" title="gelato CMS">gelato CMS</a> :: PHP/MySQL Tumblelog Content Management System.
+  </div>
+</div>
+

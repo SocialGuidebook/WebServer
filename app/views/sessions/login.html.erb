@@ -1,0 +1,21 @@
+<div class="header"><div class="header_inner"> 
+    <p class="logo"><%= link_to image_tag("common/logo.png", :alt => "logo"), root_path %></p> 
+    <ul class="front_menu">
+      <% if current_user %>
+        <li><%= link_to "Logout", "/logout" %></li>
+      <% else %>
+        <li><%= link_to "Login", "/login" %></li>
+      <% end %>
+    </ul> 
+    <!-- /header_inner,header --></div></div> 
+<div class="contents clearfix"> 
+  <div class="main">
+    <ul>
+      <li><%= link_to "Facebookでログイン", "http://www.socialguidebook.org/users/auth/facebook" %></li>
+      <li><%= link_to "Twitterでログイン", "http://www.socialguidebook.org/users/auth/twitter" %></li>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+      <li><%= link_to "Register", new_user_registration_path %></li>
+    </ul>
+  </div>
+</div>
+

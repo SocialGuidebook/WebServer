@@ -1,0 +1,253 @@
+@charset "utf-8";
+
+html {
+	background-image: url(../img/bg.png);
+}
+
+body {
+	font-size: 0.9em;
+	line-height: 1.2;
+}
+
+a:link {
+	color: #208fbf;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* ***header*** */
+
+.header {
+	background-color: #000;
+}
+
+.header .header_inner {
+	width: 890px;
+	height: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header .logo {
+	position: absolute;
+	top: 20px;
+	left: 0;
+}
+
+.header .front_menu {
+	position: absolute;
+	top: 22px;
+	right: 0;
+	text-align: right;
+}
+
+.header .front_menu {
+	width: 400px;
+}
+
+.header .front_menu a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	background-color: #333;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.header .front_menu a:hover {
+	background-color: #444;
+}
+
+/* ***contents*** */
+
+.contents {
+	width: 890px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 4em;
+	padding-top: 150px;
+}
+
+.contents .main {
+	width: 540px;
+	float: left;
+}
+
+.contents .sub {
+	width: 250px;
+	float: right;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: #f6fefe;
+}
+
+/* ***main*** */
+
+.contents .main .section {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	width: 500px;
+	padding: 20px;
+	background-color: #fff;
+}
+
+.contents .main .section h2 a:link {
+	font-size: 1.4em;
+	color: #000;
+	margin-bottom: 0.3em;
+}
+
+.contents .main .section p {
+	line-height: 1.5;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	color: #333;
+}
+
+.meta {
+	text-align: right;
+	margin-top: 10px;
+}
+
+.meta li {
+	display: inline;
+	line-height: 1.1;
+	margin-left: 5px;
+}
+
+.meta .comment a:link {
+	background: url(../img/common/ico_comment.png) no-repeat 0 50%;
+	padding-left: 17px;
+	text-decoration: none;
+	color: #208fbf;
+}
+
+.meta .comment a:hover {
+	background-image: url(../img/common/ico_comment_hover.png);
+	text-decoration: underline;
+}
+
+.meta .favorite a:link {
+	background: url(../img/common/ico_favorite.png) no-repeat 0 50%;
+	padding-left: 17px;
+	text-decoration: none;
+	color: #208fbf;
+}
+
+.meta .favorite a:hover {
+	background-image: url(../img/common/ico_favorite_hover.png);
+	text-decoration: underline;
+}
+
+/* ***aside*** */
+
+.contents .sub .section {
+	margin-bottom: 2.5em;
+}
+
+.contents .sub .section h3 {
+	font-size: 1.4em;
+	color: #000;
+	margin-bottom: 0.3em;
+}
+
+.contents .sub .section p {
+	color: #333;
+}
+
+.follower li {
+	float: left;
+	margin-right: 3px;
+	margin-bottom: 3px;
+}
+
+.contents .sub .info {
+	text-align: center;
+}
+
+.contents .sub .info h3 {
+	margin-bottom: 10px;
+}
+
+.btn_follow a:link {
+    color:#fff;
+    text-align: center;
+    background-color: #22AAFF;
+    border-radius: 5px; /* CSS3 */
+    cursor: pointer;
+    text-shadow: 0px 0px 2px #39d;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#47c1ef), to(#339ade)); /* Safari */
+    background: -moz-linear-gradient(top,#47c1ef,#339ade) no-repeat; /* FireFox */
+    border: 1px #39d solid;
+    opacity: 1;
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.btn_follow a:hover {
+    opacity: 0.8;
+}
+
+.contents .sub .category li {
+	padding-bottom: 0.2em;
+	padding-top: 0.2em;
+	font-size: 0.9em;
+}
+
+/* ***footer*** */
+
+.footer {
+	clear: both;
+	width: 100%;
+}
+
+.footer .footer_inner {
+	width: 860px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 15px;
+	text-align: center;
+	margin-bottom: 1em;
+	background-color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.footer .footer_inner li {
+	display: inline;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	font-size: 0.9em;
+}
+
+/* ***page_navi*** */
+
+.pagenavi {
+	padding: 15px;
+	background-color: #f6fefe;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.pagenavi li {
+	display: inline;
+	font-size: 1.3em;
+	padding-right: 0.2em;
+	padding-left: 0.2em;
+}

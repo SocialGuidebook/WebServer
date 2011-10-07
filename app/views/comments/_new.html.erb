@@ -1,0 +1,4 @@
+<%= form_for comment, :url => post_comments_path(@post), :remote => true do |f| %>
+  <%= error_messages_for comment %> 
+  <%= render :partial => "shared/comment_form", :locals => {:f => f} %>
+<% end %>

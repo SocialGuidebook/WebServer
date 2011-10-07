@@ -1,0 +1,12 @@
+<%= image_tag(@post.attachment.url) %>
+<div id="comment-list">
+  <%= render :partial => 'shared/comments', :locals => {:comments => @post.comments} %>
+</div>
+<div id="comment-form">
+  <%= form_for Post.new, :url => post_comments_path(@post), :remote => true do |f| %>
+  <%= render :partial => "shared/comment_form", :locals => {:f => f} %>
+  <% end %>
+</div>
+<% if @post.user == current_user %>
+  <%= link_to "Delete", post_url(@post), :method => :delete, :confirm => "Really delete?", :remote => true %>
+<% end %>

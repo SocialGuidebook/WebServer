@@ -1,0 +1,2 @@
+$(".photo-list").colorbox.close();
+$("#photo-<= @post_id %>").hide();

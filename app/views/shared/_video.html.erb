@@ -1,0 +1,16 @@
+<div class="section well post_mov">
+  <h2><%= post.title %></h2>
+  <%= raw post.video_view %>
+  <div class="mov_description">
+    <%= raw post.body_view %>
+    <!--/mov_description--></div>
+  <ul class="post_meta">
+    <li class="meta01">
+      <% if post.user %>
+        <%= image_tag post.user.main_photo_path, :width => 16, :height => 16 %><%= link_to post.user.name, person_path(post.user) %>
+      <% end %>
+    </li>
+<li class="meta02"><a href="#">000</a></li>
+<li class="meta03"><a href="#">000</a></li>
+<!--/post_meta--></ul>
+<!--/section--></div>

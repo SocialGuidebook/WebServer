@@ -1,0 +1,16 @@
+<div class="section well post_link">
+  <% if page.main_photo_path(root_url) %>
+    <p class="link_thumb">
+      <%= link_to image_tag(page.main_photo_path(root_url, 115)), page_path(page) %>
+    </p>
+  <% end %>
+  <dl class="link_desc">
+    <dt><%= link_to page.show_title, page_path(page) %></dt>
+    <dd><%= raw page.body_view %></dd>
+  </dl>
+  <ul class="post_meta">
+    <li class="meta01"><img src="http://placehold.it/16x16" /><a href="#">username</a></li>
+    <li class="meta02"><a href="#">000</a></li>
+    <li class="meta03"><a href="#">000</a></li>
+    <!--/post_meta--></ul>
+  <!--/section--></div>

@@ -1,0 +1,10 @@
+<% if @comment.errors.empty? %>
+  $("#message .success").html("Comment created.");
+  $("#comment-list").append("<%= escape_javascript(render :partial => 'shared/comments', :locals => {:comments => [@comment]} ) %>");
+  $("#comment-count-<%= @post.id %> a").text(<%= @post.comments_count %>);
+  $("#comment-form form").reset();
+  $("#errorExplanation").hide();
+<% else %>
+  $("#message .error").html("Error");
+  $("#comment-form").html("<%= escape_javascript(render :partial => 'comments/new', :locals => {:comment => @comment} ) %>");
+<% end %>

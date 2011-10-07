@@ -1,0 +1,11 @@
+<div id="contents">
+  <div class="home">
+    <p class="slideshow"><img src="http://placehold.it/960x350" /></p>
+    <h2>ご覧になりたい地域を選んでください</h2>
+    <ul class="area clearfix">
+      <% Area.all(:include => :pages).each_with_index do |area, i|%>
+        <li class="area0<%= i + 1 %>"><%= link_to area.name, page_path(area.page) %></li>
+      <% end %>
+      <!--/area--></ul>
+    <!--/home--></div>
+  <!--/contents--></div>

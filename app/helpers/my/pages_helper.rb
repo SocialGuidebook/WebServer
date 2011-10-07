@@ -1,0 +1,2 @@
+module My::PagesHelper
+end

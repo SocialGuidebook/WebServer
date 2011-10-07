@@ -1,0 +1,303 @@
+/*
+Theme Name: Litewire
+Theme URI: http://ogee.de/log/
+Description: This theme is based on Litewire theme you can find at tumblr.com
+Version: 1.0
+Author: Stefan Gaertner aka ogee
+*/
+body {
+	margin: 0px;
+	background-color: #fff;
+	font-family: 'Lucida Grande', Helvetica, sans-serif;
+}
+a {
+	color: color: #6498cc;
+}
+h1 {
+	width: 600px;
+	padding: 0px 100px 20px 100px;
+	margin: 50px auto 40px auto;
+	border-bottom: solid 1px #ccc;
+	text-align: center;
+	font: Bold 55px 'Trebuchet MS', Helvetica, sans-serif;
+	letter-spacing: -2px;
+	line-height: 50px;
+	position: relative;
+}
+h1 a {
+	color: #444;
+	text-decoration: none;
+}
+h1 img {
+	border-width: 0px;
+	position: absolute;
+	right: 0px;
+	bottom: 10px;
+	width: 43px;
+	height: 23px;
+}
+div#content {
+	width: 420px;
+	margin: auto;
+	position: relative;
+}
+div#content div#description {
+	position: absolute;
+	right: -170px;
+	width: 160px;
+	text-align: right;
+}
+div#description {
+	font: Normal 17px Helvetica, sans-serif;
+	line-height: 20px;
+	color: color: #777;
+}
+div#description a {
+	color: #777;
+}
+div.post {
+	position: relative;
+	margin-bottom: 40px;
+	padding-right: 20px;
+}
+div.post div.date {
+	position: absolute;
+	left: -260px;
+	text-align: right;
+	width: 230px;
+	white-space: nowrap;
+	font: Bold 18px Verdana, Sans-Serif;
+	letter-spacing: 0px;
+	color: #ccc;
+	text-transform: uppercase;
+	line-height: 35px;
+}
+div.post div.date div.date_brick {
+	float: right;
+	height: 20px;
+	width: 75px;
+	background-color: #fff;
+	color: #ccc;
+	text-transform: uppercase;
+	font: Bold 18px Verdana, Sans-Serif;
+	text-align: center;
+	line-height: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	letter-spacing: 0px;
+	overflow: hidden;
+}
+div.post img.permalink {
+	width: 14px;
+	height: 13px;
+	border-width: 0px;
+	background-color: #000;
+	display: none;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+}
+div.post:hover img.permalink {
+	display: inline;
+}
+div.post h2 {
+	font-size: 18px;
+	font-weight: Bold;
+	color: #6498cc;
+	letter-spacing: -1px;
+	margin: 0px 0px 5px 0px;
+}
+div.post h2 a {
+	color: #6498cc;
+	text-decoration: underline;
+}
+div.post div.caption {
+	font-size: 14px;
+	font-weight: bold;
+	color: #444;
+	margin-top: 10px;
+	padding: 0px 20px 0px 20px;
+}
+div.post div.caption a {
+	color: #444;
+}
+/* Regular Post */
+div.post div.regular {
+	font-size: 12px;
+	color: #444;
+	line-height: 17px;
+}
+div.post div.regular a {
+	text-decoration: none;
+}
+div.post div.regular blockquote {
+	font-style: italic;
+	border-left: solid 2px;
+  color: #444;
+	padding-left: 10px;
+}
+/* Quote Post */
+div.post div.quote div.quote_text {
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	border-left: solid 5px;
+	color: #888;
+	padding-left: 10px;
+}
+div.post div.quote div.quote_text a {
+	color: #888;
+}
+div.post div.quote div.source {
+	font-size: 16px;
+	font-weight: Bold;
+	color: #555;
+	margin-top: 5px;
+}
+div.post div.quote div.source a {
+	color: #555;
+}
+/* Link Post */
+div.post div.link a.link {
+	font: Bold 20px Helvetica, sans-serif;
+	letter-spacing: -1px;
+	color: #c00;
+}
+div.post div.link span.description {
+	font-size: 13px;
+	font-weight: normal;
+	letter-spacing: -1px;
+	color: #444;
+}
+/* Conversation Post */
+div.post div.conversation a {
+	text-decoration: none;
+}
+div.post div.conversation ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px 0px 0px 1px;
+	border-left: solid 5px #bbb;
+	color: #bbb;
+}
+div.post div.conversation ul li {
+	font-size: 12px;
+	padding: 4px 10px 4px 8px;
+	color: #444;
+	margin-bottom: 1px;
+}
+div.post div.conversation ul li span.label {
+	font-weight: bold;
+}
+div.post div.conversation ul li span.user_1 {
+	color: #c00;
+}
+div.post div.conversation ul li span.user_2 {
+	color: #00c;
+}
+div.post div.conversation ul li span.user_3 {
+	color: #0a0;
+}
+div.post div.conversation ul li.odd {
+	background-color: #f4f4f4;
+}
+div.post div.conversation ul li.even {
+	background-color: #e8e8e8;
+}
+/* Video Post */
+div.post div.video {
+	width: 400px;
+	margin: auto;
+}
+/* Footer */
+div#footer {
+	margin: 40px 0px 30px 0px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: #444;
+}
+div#footer a {
+	text-decoration: none;
+	color: #444;
+}
+div#footer a:hover {
+	text-decoration: underline;
+}
+div#footer div#credit {
+	font: Normal 13px Georgia, serif;
+	font-size: 13px;
+	margin-top: 15px;
+}
+/* Comments */
+.containerFormComments {
+	margin: 25px 65px 0px 0px;
+	font-family: 'Lucida Grande', Helvetica, sans-serif;
+	font-size: 0.75em;
+}
+#commentForm input, #commentForm textarea {
+	font: 12px 'Lucida Grande', Helvetica, sans-serif;
+}
+#commentForm p {
+	font-family: 'Lucida Grande', Helvetica, sans-serif;
+	margin: 5px 0;
+}
+#commentForm input {
+	width: 170px;
+	padding: 2px;
+	margin: 5px 5px 1px 0;
+}
+#commentForm textarea {
+	width: 100%;
+	padding: 2px;
+}
+#commentForm #btnAdd {
+	margin: 0;
+	float: right;
+}
+/* Navigation */
+#navigation {
+	font-size: 11px;
+	font-weight: bold;
+}
+#navigation a {
+	color: #555;
+	text-decoration: none;
+}
+#navigation a:hover {
+	text-decoration: underline;
+}
+/* Pagination */
+div.pagination {
+	text-align: center;
+	padding: 3px;
+	margin: 3px;
+}
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ddd;
+	text-decoration: none;
+	color: #aaa;
+}
+div.pagination a:hover, div.pagination a:active {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #a0a0a0;
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #e0e0e0;
+	font-weight: bold;
+	background-color: #f0f0f0;
+	color: #aaa;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}
+/* :) Hey Mom - it's for you! Love always! */

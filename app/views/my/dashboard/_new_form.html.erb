@@ -1,0 +1,3 @@
+<%= form_for :post, :url => my_posts_path, :html => {:id => "post_form",:class => "newpost"}, :remote => true do |f| %>
+  <%= render :partial => "shared/post_form", :locals => {:f => f} %>
+<% end %>

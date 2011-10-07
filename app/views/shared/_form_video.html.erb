@@ -1,0 +1,56 @@
+<%= form_for :post, :url => my_page_posts_path(@page), :remote => true do |f| %>
+  <div class="fheader clearfix">
+    <div class="post_select">
+      <ul>
+        <li class="posttype01">
+          <a href="#" class="show_post_form" data-label="text" data-post-type="<%= PostType::Text.id %>">Text</a>
+        </li>
+        <li class="posttype02">
+          <a href="#" class="show_post_form" data-label="photo" data-height="450px" data-post-type="<%= PostType::Album.id %>">Photo</a>
+        </li>
+        <li class="posttype03">
+          <a href="#" class="show_post_form" data-label="video" data-post-type="<%= PostType::Video.id %>">Video</a>
+        </li>
+        <li class="posttype04"><a href="#">リンク</a></li>
+        <li class="posttype05"><a href="#">引用</a></li>
+      </ul>
+      <!--/post_select--></div>
+    <!--/fheader--></div>
+  <div class="column">
+    <h2>動画を投稿</h2>
+    <%= error_messages_for :post %>
+    <%= hidden_field_tag "post[post_type_id]", PostType::Video.id %>
+    <dl>
+      <span class="option_fields">
+        <dt>Title</dt>
+        <dd><%= f.text_field :title, :class => "inputarea span8" %></dd>
+      </span>
+      <dt>動画URL</dt>
+      <dd><%= f.text_field :link, :class => "inputarea span8" %></dd>
+      <dt>説明<span>（任意）</span></dt>
+      <dd><%= f.text_area :body, :class => "inputarea txtarea" %></dd>
+      <dt>Permissions<span>(Optional)</span></dt>
+      <dd>
+        <%= f.check_box :public, :id => "post_permission_public", :checked => "checked" %> Public
+        <%= f.text_field :permissions, :class => "permission", :size => "60" %>
+      </dd>
+      <dt>カテゴリ<span>（任意）</span></dt>
+      <dd>
+        <ul class="cat_list clearfix">
+          <li class="cat01"><a href="#">泊まる</a></li>
+          <li class="cat02"><a href="#">遊ぶ</a></li>
+          <li class="cat03"><a href="#">食べる</a></li>
+          <li class="cat04"><a href="#">買う</a></li>
+          <li class="cat05"><a href="#">イベント</a></li>
+          <li class="cat06"><a href="#">アクセス</a></li>
+          <li class="cat07"><a href="#">ツアー</a></li>
+          <li class="cat08"><a href="#">交通</a></li>
+        </ul>
+      </dd>
+    </dl>
+    <!--/column--></div>
+  <ul class="btn_save">
+    <li><input type="button" value="キャンセル" class="btn" /></li>
+    <li><%= f.submit "Add video", :class => "btn primary" %></li>
+  </ul>
+<% end %>

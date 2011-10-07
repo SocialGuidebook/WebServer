@@ -1,0 +1,16 @@
+      <% if @page %>
+        <%= link_to post.comments_count, page_post_path(@page, post) %>
+      <% else %>
+        <%= link_to post.comments_count, post_path(post) %>
+      <% end %>
+    </li>
+    <li class="favorite">
+      <% if current_user && current_user.favorite_posts?(post) %>
+        Favorited.
+        <%= link_to post.favorites_count, post_favorite_path(post, 1), :remote => true, :method => :delete %>
+      <% else %>
+        <%= link_to post.favorites_count, add_post_favorites_path(post), :remote => true %>
+      <% end %>
+    </li>
+  </ul>
+</div>

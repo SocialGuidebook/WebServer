@@ -1,0 +1,28 @@
+<div class="section well post_img">
+  <ul class="photos clearfix">
+    <% post.childs.each do |child| %>
+      <li id="photo-#{child.id}"><%= link_to image_tag(child.attachment.url(:small)), post_url(child, :photo => true), :class => "photo-list" %></li>
+    <% end %>
+    <!--/photos--></ul>
+  <div class="photo_description">
+    <%= post.body %>
+  </div>
+  <ul class="post_meta">
+    <li class="meta01"><img src="http://placehold.it/16x16" /><a href="#">username</a></li>
+    <li class="meta02">
+      <% if @page %>
+        <%= link_to post.comments_count, page_post_path(@page, post) %>
+      <% else %>
+        <%= link_to post.comments_count, post_path(post) %>
+      <% end %>
+    </li>
+    <li class="meta03">
+      <% if current_user && current_user.favorite_posts?(post) %>
+        Favorited.
+        <%= link_to post.favorites_count, post_favorite_path(post, 1), :remote => true, :method => :delete %>
+      <% else %>
+        <%= link_to post.favorites_count, add_post_favorites_path(post), :remote => true %>
+      <% end %>
+    </li>
+    <!--/post_meta--></ul>
+  <!--/section--></div>

@@ -1,0 +1,9 @@
+<% unless current_user %>
+  $("#error_message").html("Please logged in");
+<% else %>
+  <% unless @post %>
+    $("#message .error").html("Post not found");
+  <% else %>
+    $("#message .success").html("Add to favorite.");
+  <% end %>
+<% end %>

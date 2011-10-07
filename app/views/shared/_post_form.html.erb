@@ -1,0 +1,52 @@
+<%= error_messages_for :post %>
+<fieldset>
+  <%= f.hidden_field :post_type_id %>
+  <span class="post_form text">
+    <span class="option_fields">
+      <p>
+        <label for="title">Title <span class="option">(optional)</span></label>
+        <%= f.text_field :title, :class => "txt", :size => "80" %>
+      </p>
+    </span>
+    <p>
+      <label for="description">Body</label><br />
+      <%= f.text_area :body, :cols => 84, :rows => 12 %>
+    </p>
+  </span>
+  <span class="post_form photo">
+    <span class="option_fields">
+      <p>
+        <label for="title">Title <span class="option">(optional)</span></label>
+        <%= f.text_field :title, :class => "txt", :size => "80" %>
+      </p>
+    </span>
+<div id="fileupload">
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <div class="fileupload-buttonbar">
+            <label class="fileinput-button">
+                <span>Add files...</span>
+                <input type="file" name="files[]" multiple>
+            </label>
+            <button type="submit" class="start">Start upload</button>
+            <button type="reset" class="cancel">Cancel upload</button>
+            <button type="button" class="delete">Delete files</button>
+        </div>
+    </form>
+    <div class="fileupload-content">
+        <table class="files"></table>
+        <div class="fileupload-progressbar"></div>
+    </div>
+</div>
+     <p>
+      <label for="description">Photo</label><br />
+      
+    </p>
+    <p>
+      <label for="description">Body</label><br />
+      <%= f.text_area :body, :cols => 84, :rows => 12 %>
+    </p>
+  </span>
+    <p>
+    <%= f.submit "Create post", :class => "btn" %>
+  </p>
+</fieldset>

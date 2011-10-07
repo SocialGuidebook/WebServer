@@ -1,0 +1,24 @@
+      <%= form_for :post, :url => my_page_posts_path(@page), :html => {:multipart => true} do |f| %>
+        <%= error_messages_for :post %>
+        <%= hidden_field_tag "post[post_type_id]", PostType::Album.id %>
+        <fieldset>
+          <span class="option_fields">
+            <p>
+              <label for="title">Title <span class="option">(optional)</span></label><br />
+              <%= f.text_field :title, :class => "txt", :size => "80" %>
+            </p>
+          </span>
+          <span class="attach_description">
+             <div id="upload-status"></div>
+            <p>
+              <label for="description">Body</label><br />
+              <%= f.text_area :body, :cols => 60, :rows => 4 %>
+              <%= hidden_field_tag "post[uniq_key]", @uuid %>
+            </p>
+            <p><%= f.submit "Add post" %></p>
+          </span>
+          <div class="swfupload-control">
+            <span id="spanButtonPlaceholder"></span>
+          </div>
+        </fieldset>
+      <% end %>

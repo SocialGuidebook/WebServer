@@ -1,0 +1,110 @@
+<%= form_for :page, :url => my_pages_path, :html => {:id => "page_form",:class => "newpost"} do |f| %>
+  <%= error_messages_for :page %>
+  <fieldset>
+    <p>
+      <label for="title">Title</label>
+      <%= f.text_field :title, :class => "txt", :size => "80", :id => "page_#{@page.id}_title" %>
+    </p>
+    <p>
+      <label for="title">Address <span class="require">Required</span></label><br />
+      Country: <%= f.select :country_id, Country.all(:order => "name").collect{|c| [c.name, c.id]} %>
+      States: <%= f.text_field :states, :class => "txt quoter", :size => "20", :id => "page_#{@page.id}_states" %>
+      City: <%= f.text_field :city, :class => "txt quoter", :size => "20", :id => "page_#{@page.id}_city" %><br />
+      Town: <%= f.text_field :town, :class => "txt quoter", :size => "20", :id => "page_#{@page.id}_town" %>
+      Street <%= f.text_field :street, :class => "txt quoter", :size => "20", :id => "page_#{@page.id}_street" %>
+       <input type="button" value="Move marker" id="marker_move_<%= @page.id %>" />
+      <%= raw(@page.map(:draggable => true).to_html) %> <%= raw(@page.map.div(:width => 500, :height => 300)) %>
+      <%= f.hidden_field :latitude, :id => "page_#{@page.id}_latitude" %><br />
+      <%= f.hidden_field :longitude, :id => "page_#{@page.id}_longitude" %>
+    </p>
+    <p>
+      <label for="genre">Genre/Category/SubCategory</label><br />
+      <%= f.select :genre_id, Genre.dropdown, :include_blank => true %>
+      <%= f.select :category_id, Category.dropdown, :include_blank => true %>
+      <%= f.select :sub_category_id, SubCategory.dropdown, :include_blank => true %>
+    </p>
+    <p>
+      <label for="description">Body</label><br />
+      <%= f.text_area :body, :cols => 84, :rows => 12 %>
+    </p>
+    <span style="color: rgb(136, 136, 136); margin-bottom: 10px; font-size: 10px;">
+      <a href="http://hobix.com/textile/">Markdown</a> syntax is supported.<br />
+      Bookmarklet - <a href="javascript:var w; setTimeout('w.focus()',100);w=window.open('bm.php?url='+encodeURIComponent(location.href)+'&sel='+encodeURIComponent(window.getSelection()),'bookmarklet','toolbar=0,resizable=0,status=1,width=650,height=460,dependent=yes' ); w.focus();">add to gelato</a>
+    </span>
+    <p>
+      <%= f.submit "Create page", :class => "btn" %>
+    </p>
+  </fieldset>
+<% end %>
+
+    <script type="text/javascript">
+      var map_lock = false;
+      jQuery.event.add(window, "load", function(){
+        GEvent.addListener(<%= @page.marker_id %>,"drag", function() {
+          map_lock = true;
+          set_position(<%= @page.new_record?? "''" : @page.id %>, <%= @page.marker_id %>.getLatLng());
+        });
+      });
+      function map_move_from_title(){
+        var address = jQuery("#page_<%= @page.id %>_title").val();
+        gGeo.getLatLng(address, function(point) {
+          <%= @page.marker_id %>.setPoint(point);
+          set_position(<%= @page.new_record?? "''" : @page.id %>, <%= @page.marker_id %>.getLatLng());
+          map.setCenter(point);
+            map.setZoom(18);
+          });
+      }
+      function map_move() {
+        if (map_lock) 
+          return true;
+        var address = jQuery("#page_<%= @page.id %>_states").val() + jQuery("#page_<%= @page.id %>_city").val() + jQuery("#page_<%= @page.id %>_town").val() + jQuery("#page_<%= @page.id %>_street").val();
+        gGeo.getLatLng(address, function(point) {
+          <%= @page.marker_id %>.setPoint(point);
+          set_position(<%= @page.new_record?? "''" : @page.id %>, <%= @page.marker_id %>.getLatLng());
+          map.setCenter(point);
+          if (jQuery("#page_<%= @page.id %>_city").val() == "") {
+            map.setZoom(8);
+          }else if (jQuery("#page_<%= @page.id %>_town").val() == "") {
+            map.setZoom(10);
+          }else if (jQuery("#page_<%= @page.id %>_street").val() == "") {
+            map.setZoom(12);
+          }else{
+            map.setZoom(15);
+          }
+        });
+      }
+      $("#page_<%= @page.id %>_title").blur(function(){map_move_from_title()});
+      <% ["states", "city", "town", "street"].each do |name| %>
+        $("#page_<%= @page.id %>_<%= name %>").blur(function(){
+            map_move();
+        });
+        $("#page_<%= @page.id %>_<%= name %>").keydown(function(e){
+          if(e.keyCode=='13'){
+            map_move();
+            return false;
+          }
+        });
+      <% end %>
+      jQuery("#marker_move_<%= @page.id %>").click(function() {
+        map_move();
+      });
+      var genres = {
+      <% Genre.all.each do |genre|%>
+        "<%= genre.id %>":[
+          <% genre.categories.each do |category|%>
+            {"id": "<%= category.id %>", "name": "<%= category.name %>"},
+          <% end %>
+          ]
+        ,
+      <% end %>
+      }
+      jQuery("#page_genre_id").change(function(){
+        var genre = $(this);
+        var categories = genres[genre.val()];
+        $('#page_category_id option').remove();
+        $('#page_category_id').append($('<option>').attr({ value: ""}).text("Select category"));
+        for (var i = 0; i < categories.length; i++){
+          $('#page_category_id').append($('<option>').attr({ value: categories[i]["id"] }).text(categories[i]["name"]));
+        }
+      });
+    </script>

@@ -1,0 +1,295 @@
+ja:
+  activerecord:
+    models:
+      resource: resource  #g
+      user: user  #g
+      group: group  #g
+      page: page  #g
+      post: post  #g
+      area: area  #g
+      auth: auth  #g
+      category: category  #g
+      count: count  #g
+      country: country  #g
+      genre: genre  #g
+      member: member  #g
+      permission: permission  #g
+      post_type: post_type  #g
+      post_category: post_category  #g
+      relation: relation  #g
+      sub_category: sub_category  #g
+
+    attributes:
+      resource:
+        title: title  #g
+        locale: locale  #g
+        latitude: latitude  #g
+        longitude: longitude  #g
+        zipcode: zipcode  #g
+        states: states  #g
+        city: city  #g
+        town: town  #g
+        street: street  #g
+        telephone: telephone  #g
+        body: body  #g
+        link: link  #g
+        rating: rating  #g
+        attachment_file_name: attachment_file_name  #g
+        attachment_content_type: attachment_content_type  #g
+        attachment_file_size: attachment_file_size  #g
+        attachment_updated_at: attachment_updated_at  #g
+        nickname: nickname  #g
+        email: email  #g
+        name: name  #g
+        image_path: image_path  #g
+        uniq_key: uniq_key  #g
+        encrypted_password: encrypted_password  #g
+        reset_password_token: reset_password_token  #g
+        remember_created_at: remember_created_at  #g
+        current_sign_in_at: current_sign_in_at  #g
+        last_sign_in_at: last_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        user: user  #g
+
+      user:
+        title: title  #g
+        locale: locale  #g
+        latitude: latitude  #g
+        longitude: longitude  #g
+        zipcode: zipcode  #g
+        states: states  #g
+        city: city  #g
+        town: town  #g
+        street: street  #g
+        telephone: telephone  #g
+        body: body  #g
+        link: link  #g
+        rating: rating  #g
+        attachment_file_name: attachment_file_name  #g
+        attachment_content_type: attachment_content_type  #g
+        attachment_file_size: attachment_file_size  #g
+        attachment_updated_at: attachment_updated_at  #g
+        nickname: nickname  #g
+        email: email  #g
+        name: name  #g
+        image_path: image_path  #g
+        uniq_key: uniq_key  #g
+        encrypted_password: encrypted_password  #g
+        reset_password_token: reset_password_token  #g
+        remember_created_at: remember_created_at  #g
+        current_sign_in_at: current_sign_in_at  #g
+        last_sign_in_at: last_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        favorite_posts: favorite_posts  #g
+        my_groups: my_groups  #g
+        auths: auths  #g
+        user: user  #g
+        permissions: permissions  #g
+        pages: pages  #g
+        posts: posts  #g
+        relations: relations  #g
+        users: users  #g
+        admin_pages: admin_pages  #g
+        groups: groups  #g
+        relations_post: relations_post  #g
+
+      group:
+        title: title  #g
+        locale: locale  #g
+        latitude: latitude  #g
+        longitude: longitude  #g
+        zipcode: zipcode  #g
+        states: states  #g
+        city: city  #g
+        town: town  #g
+        street: street  #g
+        telephone: telephone  #g
+        body: body  #g
+        link: link  #g
+        rating: rating  #g
+        attachment_file_name: attachment_file_name  #g
+        attachment_content_type: attachment_content_type  #g
+        attachment_file_size: attachment_file_size  #g
+        attachment_updated_at: attachment_updated_at  #g
+        nickname: nickname  #g
+        email: email  #g
+        name: name  #g
+        image_path: image_path  #g
+        uniq_key: uniq_key  #g
+        encrypted_password: encrypted_password  #g
+        reset_password_token: reset_password_token  #g
+        remember_created_at: remember_created_at  #g
+        current_sign_in_at: current_sign_in_at  #g
+        last_sign_in_at: last_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        user: user  #g
+        relations: relations  #g
+        users: users  #g
+
+      page:
+        title: title  #g
+        locale: locale  #g
+        latitude: latitude  #g
+        longitude: longitude  #g
+        zipcode: zipcode  #g
+        states: states  #g
+        city: city  #g
+        town: town  #g
+        street: street  #g
+        telephone: telephone  #g
+        body: body  #g
+        link: link  #g
+        rating: rating  #g
+        attachment_file_name: attachment_file_name  #g
+        attachment_content_type: attachment_content_type  #g
+        attachment_file_size: attachment_file_size  #g
+        attachment_updated_at: attachment_updated_at  #g
+        nickname: nickname  #g
+        email: email  #g
+        name: name  #g
+        image_path: image_path  #g
+        uniq_key: uniq_key  #g
+        encrypted_password: encrypted_password  #g
+        reset_password_token: reset_password_token  #g
+        remember_created_at: remember_created_at  #g
+        current_sign_in_at: current_sign_in_at  #g
+        last_sign_in_at: last_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        parents: parents  #g
+        genre: genre  #g
+        country: country  #g
+        user: user  #g
+        category: category  #g
+        permissions: permissions  #g
+        pages: pages  #g
+        sub_category: sub_category  #g
+        relations: relations  #g
+        posts: posts  #g
+        admins: admins  #g
+        area: area  #g
+        users: users  #g
+
+      post:
+        title: title  #g
+        locale: locale  #g
+        latitude: latitude  #g
+        longitude: longitude  #g
+        zipcode: zipcode  #g
+        states: states  #g
+        city: city  #g
+        town: town  #g
+        street: street  #g
+        telephone: telephone  #g
+        body: body  #g
+        link: link  #g
+        rating: rating  #g
+        attachment_file_name: attachment_file_name  #g
+        attachment_content_type: attachment_content_type  #g
+        attachment_file_size: attachment_file_size  #g
+        attachment_updated_at: attachment_updated_at  #g
+        nickname: nickname  #g
+        email: email  #g
+        name: name  #g
+        image_path: image_path  #g
+        uniq_key: uniq_key  #g
+        encrypted_password: encrypted_password  #g
+        reset_password_token: reset_password_token  #g
+        remember_created_at: remember_created_at  #g
+        current_sign_in_at: current_sign_in_at  #g
+        last_sign_in_at: last_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        post_category: post_category  #g
+        user: user  #g
+        permissions: permissions  #g
+        childs: childs  #g
+        comments: comments  #g
+        pages: pages  #g
+        post_type: post_type  #g
+        parent_post: parent_post  #g
+        relations: relations  #g
+        users: users  #g
+
+      area:
+        name: name  #g
+        countries: countries  #g
+        pages: pages  #g
+
+      auth:
+        uid: uid  #g
+        provider: provider  #g
+        auth_key: auth_key  #g
+        auth_secret: auth_secret  #g
+        username: username  #g
+        token: token  #g
+        image_path: image_path  #g
+        email: email  #g
+        user: user  #g
+
+      category:
+        name: name  #g
+        genre: genre  #g
+        sub_categories: sub_categories  #g
+        pages: pages  #g
+
+      count:
+        name: name  #g
+        number: number  #g
+
+      country:
+        name: name  #g
+        pages: pages  #g
+        area: area  #g
+
+      genre:
+        name: name  #g
+        categories: categories  #g
+        sub_categories: sub_categories  #g
+        pages: pages  #g
+
+      member:
+        accept: accept  #g
+        users: users  #g
+        groups: groups  #g
+
+      permission:
+        public: public  #g
+        page: page  #g
+        group: group  #g
+        user: user  #g
+        post: post  #g
+
+      post_type:
+        name: name  #g
+        title_required: title_required  #g
+        body_required: body_required  #g
+        address_required: address_required  #g
+        attachment_required: attachment_required  #g
+        link_required: link_required  #g
+        posts: posts  #g
+
+      post_category:
+        name: name  #g
+        posts: posts  #g
+
+      relation:
+        user_users: user_users  #g
+        page: page  #g
+        user_groups: user_groups  #g
+        user_posts: user_posts  #g
+        post_pages: post_pages  #g
+        page_users: page_users  #g
+        page_posts: page_posts  #g
+        page_pages: page_pages  #g
+        group_users: group_users  #g
+        post_users: post_users  #g
+
+      sub_category:
+        name: name  #g
+        genre: genre  #g
+        category: category  #g
+        pages: pages  #g
