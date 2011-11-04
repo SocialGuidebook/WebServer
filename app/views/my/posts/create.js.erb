@@ -1,8 +1,6 @@
 <% if @post.errors.empty? %>
-  $("#posts").prepend('<%= escape_javascript(render :partial => "shared/post", :locals => {:post => @post}) %>');
+  $("#posts").prepend('<%= escape_javascript(render :partial => "shared/#{@post.post_type.name.downcase}", :locals => {:post => @post}) %>');
   $("#post_form").reset();
-  $(".show_post_form").colorbox.close();
-  $(".box").hide();
 <% else %>
   $("#new_form").html("<%= escape_javascript(render :partial => 'my/dashboard/new_form') %>");
 <% end %>

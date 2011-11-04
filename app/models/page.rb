@@ -18,13 +18,27 @@ class Page < Resource
   
   before_create :set_password
   
+  PerPage = 20
+  
+  def view_post_type_id=(post_type_id)
+    @post_type_id = post_type_id
+  end
+  
   def admin?(user)
     return nil unless user
     admins.map(&:id).include? user.id
   end
   
+  def page_number=(page)
+    @page_number = page
+  end
+  
   def list_posts
-    posts.all(:conditions => ["parent_post_id is null"], :order => "id desc")
+    if @post_type_id
+      posts.paginate(:conditions => ["parent_post_id is null and post_type_id = ?", @post_type_id], :page => @page_number, :per_page => Page::PerPage, :order => "id desc")
+    else
+      posts.all(:conditions => ["parent_post_id is null"], :order => "id desc")
+    end
   end
   
   def page?
@@ -90,11 +104,19 @@ class Page < Resource
     "<h4><a href='/pages/#{title}'>#{title}</a></h4><p>#{body.to_s.split(//)[0..50]}...</p>"
   end
   
+  def get_icon
+    icon = icon_id.blank?? nil : GIcon.new(:image => icon_path, :copy_base => GIcon::DEFAULT, :icon_size => GSize.new(32, 37), :icon_anchor => GPoint.new(15, 34))
+  end
+  
+  def icon_path
+    "/images/icons/#{self.icon_id}"
+  end
+  
   def get_marker(add_options = {})
     if self.new_record?
       options = {:title => title, :info_window => "#{info_window}", :draggable => true, :name => marker_id}
     else
-      options = {:title => title, :info_window => "#{info_window}", :name => marker_id, :icon => get_icon}
+      options = {:title => title, :info_window => "#{info_window}", :name => marker_id}
     end
     options = options.merge(add_options)
     return GMarker.new([latitude, longitude], options) if self.has_position?

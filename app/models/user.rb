@@ -28,6 +28,14 @@ class User < Resource
     posts
   end
   
+  def twitter?
+    auths.map(:provider).include?("twitter")
+  end
+  
+  def facebook?
+    auths.map(:provider).include?("facebook")
+  end
+  
   def main_photo_path
     self.image_path.gsub("square", "large")
   end

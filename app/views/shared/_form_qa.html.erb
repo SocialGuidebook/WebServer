@@ -1,4 +1,4 @@
-<%= form_for :post, :url => my_page_posts_path(@page), :html => {:multipart => true} do |f| %>
+<%= form_for :post, :url => my_page_posts_path(@page), :remote => true, :html => {:id => "post_form"} do |f| %>
   <div class="fheader clearfix">
     <div class="post_select">
       <ul>
@@ -17,21 +17,10 @@
       <!--/post_select--></div>
     <!--/fheader--></div>
   <div class="column">
-    <%= error_messages_for :post %>
-    <%= hidden_field_tag "post[post_type_id]", PostType::Album.id %>
-    <span class="open_options">Options</span>
-    <h2>Upload photos</h2>
-    <div class="photo_uploader">
-      <dl>
-        <dt>Select photos</dt>
-        <dd>
-          <div class="swfupload-control">
-            <span id="spanButtonPlaceholder"></span>
-          </div>
-        </dd>
-      </dl>
-    </div>
-    <span class="attach_description">
+      <%= error_messages_for :post %>
+      <%= hidden_field_tag "post[post_type_id]", PostType::Link.id %>
+      <span class="open_options">Options</span>
+      <h2>テキストを投稿</h2>
       <dl>
         <span class="option_fields">
           <dt>タイトル<span>（任意）</span></dt>
@@ -39,19 +28,14 @@
             <%= f.text_field :title, :class => "inputarea span8" %>
           </dd>
         </span>
-        <span id="upload-status">
-          <dt>Status</dt>
-          <dd></dd>
-        </span>
         <dt>内容</dt>
         <dd><%= f.text_area :body, :class => "inputarea txtarea" %></dd>
-        <%= hidden_field_tag "post[uniq_key]", @uuid %>
         <dt>Permissions</dt>
         <dd>
           <%= f.check_box :public, :id => "post_permission_public", :checked => "checked" %> Public
           <%= f.text_field :permissions, :class => "permission", :size => "60" %>
         </dd>
-        <dt>Category<span>(Option)</span></dt>
+        <dt>カテゴリ<span>（任意）</span></dt>
         <dd>
           <ul class="cat_list clearfix">
             <li class="cat01"><a class="active" href="#">泊まる</a></li>
@@ -65,10 +49,9 @@
           </ul>
         </dd>
       </dl>
-      <ul class="btn_save">
-        <li><input type="button" value="キャンセル" class="btn" /></li>
-        <li><%= f.submit "Add photos", :class => "btn primary" %></li>
-      </ul>
-    </span>
-    <!--/column--></div>
+      <!--/column--></div>
+  <ul class="btn_save">
+    <li><input type="button" value="キャンセル" class="btn" /></li>
+    <li><%= f.submit "Add post", :class => "btn primary" %></li>
+  </ul>
 <% end %>

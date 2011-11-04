@@ -12,8 +12,7 @@ gem "kramdown"
 gem "geokit"
 gem 'barista'
 gem 'barista_growl', :git => 'http://github.com/TrevorBurnham/barista_growl.git'
-
-gem 'guard-passenger'
+# gem 'guard-passenger'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -26,7 +25,8 @@ gem 'guard-passenger'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'RedCloth'
-gem 'image_science', '1.1.3'
+gem 'RubyInline', :require => 'inline'
+gem 'image_science', '1.2.1'
 gem "paperclip", "~> 2.3"
 gem 'mime-types', :require => 'mime/types'
 gem 'json'

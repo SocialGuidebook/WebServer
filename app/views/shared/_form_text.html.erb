@@ -3,54 +3,52 @@
     <div class="post_select">
       <ul>
         <li class="posttype01">
-          <a href="#" class="show_post_form active" data-label="text" data-post-type="<%= PostType::Text.id %>">Text</a>
+          <a href="#" class="active" data-label="text" data-post-type="<%= PostType::Text.id %>">Text</a>
         </li>
         <li class="posttype02">
           <a href="#" class="show_post_form" data-label="photo" data-height="450px" data-post-type="<%= PostType::Album.id %>">Photo</a>
         </li>
-        <li class="posttype03">
-          <a href="#" class="show_post_form" data-label="video" data-post-type="<%= PostType::Video.id %>">Video</a>
-        </li>
-        <li class="posttype04"><a href="#">リンク</a></li>
-        <li class="posttype05"><a href="#">引用</a></li>
       </ul>
       <!--/post_select--></div>
     <!--/fheader--></div>
   <div class="column">
       <%= error_messages_for :post %>
       <%= hidden_field_tag "post[post_type_id]", PostType::Text.id %>
-      <span class="open_options">Options</span>
-      <h2>テキストを投稿</h2>
+      <span class="open_options submit_fields">View options</span>
       <dl>
+        <dd><%= f.text_area :body, :class => "inputarea txtarea no_focus" %></dd>
         <span class="option_fields">
-          <dt>タイトル<span>（任意）</span></dt>
+          <dt>Title<span>(Option)</span></dt>
           <dd>
             <%= f.text_field :title, :class => "inputarea span8" %>
           </dd>
+          <dt>URL<span>(Option)</span></dt>
+          <dd>
+            <%= f.text_field :url, :class => "inputarea span8" %>
+          </dd>
+          <dt>Category<span>(Option)</span></dt>
+          <dd>
+            <%= f.hidden_field :category_id, :id => "text_post_category_id" %>
+            <ul class="cat_list clearfix">
+              <li class="cat01"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Stay').id %>">泊まる</a></li>
+              <li class="cat02"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Activity').id %>">遊ぶ</a></li>
+              <li class="cat03"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Eat').id %>">食べる</a></li>
+              <li class="cat04"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Shopping').id %>">買う</a></li>
+              <li class="cat05"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Event').id %>">イベント</a></li>
+              <li class="cat06"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Access').id %>">アクセス</a></li>
+              <li class="cat07"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Tour').id %>">ツアー</a></li>
+              <li class="cat08"><a href="#" data-form="text" data-value="<%= Genre.PostCategories('Traffic').id %>">交通</a></li>
+            </ul>
+          </dd>
+          <dt>Permissions</dt>
+          <dd>
+            <%= f.check_box :public, :id => "post_permission_public", :checked => "checked" %> Public
+            <%= f.text_field :permissions, :class => "permission", :size => "60" %>
+          </dd>
         </span>
-        <dt>内容</dt>
-        <dd><%= f.text_area :body, :class => "inputarea txtarea" %></dd>
-        <dt>Permissions</dt>
-        <dd>
-          <%= f.check_box :public, :id => "post_permission_public", :checked => "checked" %> Public
-          <%= f.text_field :permissions, :class => "permission", :size => "60" %>
-        </dd>
-        <dt>カテゴリ<span>（任意）</span></dt>
-        <dd>
-          <ul class="cat_list clearfix">
-            <li class="cat01"><a class="active" href="#">泊まる</a></li>
-            <li class="cat02"><a href="#">遊ぶ</a></li>
-            <li class="cat03"><a href="#">食べる</a></li>
-            <li class="cat04"><a href="#">買う</a></li>
-            <li class="cat05"><a href="#">イベント</a></li>
-            <li class="cat06"><a href="#">アクセス</a></li>
-            <li class="cat07"><a href="#">ツアー</a></li>
-            <li class="cat08"><a href="#">交通</a></li>
-          </ul>
-        </dd>
       </dl>
       <!--/column--></div>
-  <ul class="btn_save">
+  <ul class="btn_save submit_fields">
     <li><input type="button" value="キャンセル" class="btn" /></li>
     <li><%= f.submit "Add post", :class => "btn primary" %></li>
   </ul>

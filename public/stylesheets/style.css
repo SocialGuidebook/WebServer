@@ -433,7 +433,7 @@ ul.browse li.b01 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 0;
 }
 
-ul.browse li.b01 a:hover {
+ul.browse li.b01 a:hover, ul.browse li.b01 a.active {
 	background-position: 0 -28px;
 }
 
@@ -441,7 +441,7 @@ ul.browse li.b02 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -56px;
 }
 
-ul.browse li.b02 a:hover {
+ul.browse li.b02 a:hover, ul.browse li.b02 a.active {
 	background-position: 0 -84px;
 }
 
@@ -449,7 +449,7 @@ ul.browse li.b03 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -112px;
 }
 
-ul.browse li.b03 a:hover {
+ul.browse li.b03 a:hover, ul.browse li.b03 a.active {
 	background-position: 0 -140px;
 }
 
@@ -457,7 +457,7 @@ ul.browse li.b04 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -168px;
 }
 
-ul.browse li.b04 a:hover {
+ul.browse li.b04 a:hover,ul.browse li.b04 a.active {
 	background-position: 0 -196px;
 }
 
@@ -465,7 +465,7 @@ ul.browse li.b05 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -224px;
 }
 
-ul.browse li.b05 a:hover {
+ul.browse li.b05 a:hover,ul.browse li.b05 a.active {
 	background-position: 0 -252px;
 }
 
@@ -473,7 +473,7 @@ ul.browse li.b06 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -280px;
 }
 
-ul.browse li.b06 a:hover {
+ul.browse li.b06 a:hover,ul.browse li.b06 a.active {
 	background-position: 0 -308px;
 }
 
@@ -481,7 +481,7 @@ ul.browse li.b07 a {
 	background: url(../images/common/browse_small.png) no-repeat 0 -336px;
 }
 
-ul.browse li.b07 a:hover {
+ul.browse li.b07 a:hover,ul.browse li.b07 a.active {
 	background-position: 0 -364px;
 }
 
@@ -1390,8 +1390,12 @@ p.btn_close a:hover {
 }
 
 .floating .column .txtarea {
-	width: 460px;
+	width: 510px;
 	height: 8em;
+}
+
+.floating .column .txtarea.no_focus {
+	height: 2em;
 }
 
 .floating .column .txtarea_faq {

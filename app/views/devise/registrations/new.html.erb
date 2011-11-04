@@ -2,19 +2,22 @@
   <div class="login_signin clearfix">
     <div class="section well clearfix">
       <div class="column loginform">
-        <h2>ログイン</h2>
-        <form>
+        <h2><%= t :sign_up, :scope => "views.user" %></h2>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
           <dl>
-            <dt>ユーザー名</dt>
-            <dd><input type="text" class="inputarea span4" /></dd>
-            <dt>パスワード</dt>
-            <dd><input type="text" class="inputarea span4" /></dd>
+            <dt><%= f.label :email %></dt>
+            <dd><%= f.email_field :email, :class => "inputarea span4" %></dd>
+            <dt><%= f.label :password %></dt>
+            <dd><%= f.password_field :password, :class => "inputarea span4" %></dd>
+            <dt><%= f.label :password_confirmation %></dt>
+            <dd><%= f.password_field :password_confirmation, :class => "inputarea span4" %></dd>
           </dl>
           <ul class="btn_save">
-            <li><input type="button" value="ログイン" class="btn" /></li>
-            <li>or <%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= f.submit t(:registration), :class => "btn" %></li>
+            <li>or <%= link_to "Login", "/login" %></li>
           </ul>
-        </form>
+        <% end %>
         <!--/column--></div>
       <div class="column auth">
         <h2>TwitterまたはFacebookをお持ちの方</h2>
@@ -27,3 +30,4 @@
     <!--/login--></div>
   <!--/contents--></div>
 
+<%# = render :partial => "devise/shared/links" %>

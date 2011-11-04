@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Thu, 06 Oct 2011 12:40:22 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 20 Oct 2011 11:30:33 GMT from
  * /Users/nakatsugawa/Dropbox/socialguidebook/app/coffeescripts/application.coffee
  */
 
@@ -27,8 +27,8 @@
   $(function() {
     $("form[data-update]").live("ajax:success", function(data, status, xhr) {
       var link;
-      if ($("#loading")) {
-        $("#loading").hide();
+      if ($("#spin")) {
+        $("#spin").hide();
       }
       link = $(this);
       $("#" + link.attr("data-update")).html(status);
@@ -37,14 +37,14 @@
       }
     });
     $("form[data-update]").live("ajax:beforeSend", function() {
-      if ($("#loading")) {
-        return $("#loading").show();
+      if ($("#spin")) {
+        return $("#spin").show();
       }
     });
     $("a[data-update]").live("ajax:success", function(data, status, xhr) {
       var link;
-      if ($("#loading")) {
-        $("#loading").slideUp();
+      if ($("#spin")) {
+        $("#spin").slideUp();
       }
       link = $(this);
       $("#" + link.attr("data-update")).html(status);
@@ -58,8 +58,8 @@
     });
     $("a[data-append]").live("ajax:success", function(data, status, xhr) {
       var link;
-      if ($("#loading")) {
-        $("#loading").slideUp();
+      if ($("#spin")) {
+        $("#spin").slideUp();
       }
       link = $(this);
       $("#" + link.attr("data-append")).append(status);
@@ -71,15 +71,15 @@
     $("a[data-update]").live("ajax:beforeSend", function() {
       var link;
       link = $(this);
-      if ($("#loading") && link.attr("data-load") === "true") {
-        $("#loading").show();
+      if ($("#spin") && link.attr("data-load") === "true") {
+        $("#spin").show();
       }
       if (link.attr("data-before")) {
         return eval(link.attr("data-before"));
       }
     });
-    if ($("#loading")) {
-      return $("#loading").hide();
+    if ($("#spin")) {
+      return $("#spin").hide();
     }
   });
   jQuery.fn.reset = function() {
@@ -101,6 +101,31 @@
         height: ($(this).attr("data-height") ? $(this).attr("data-height") : null)
       }, color_box_iframe()));
     });
-    return $(".photo-list").colorbox();
+    $(".photo-list").colorbox();
+    $(".cat_list li a").click(function() {
+      $(".cat_list li a").removeClass("active");
+      console.log($(this).attr("data-value"));
+      $("#" + $(this).attr("data-form") + "_post_category_id").val($(this).attr("data-value"));
+      return $(this).addClass("active");
+    });
+    $(".no_focus").focus(function() {
+      $(this).removeClass("no_focus");
+      $(this).addClass("on_focus");
+      return $(".submit_fields").show();
+    });
+    $(".option_fields").hide();
+    $(".open_options").click(function() {
+      console.log("hre");
+      $(".option_fields").toggle();
+      return true;
+    });
+    $(".browse li a").bind("ajax:beforeSend", function() {
+      return $("#spin").show();
+    });
+    $(".browse li a").bind("ajax:complete", function() {
+      $(this).addClass("active");
+      return $("#spin").hide();
+    });
+    return $(".submit_fields").hide();
   });
 }).call(this);

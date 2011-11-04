@@ -8,4 +8,12 @@ class Genre < ActiveRecord::Base
       [row.name, row.id]
     end
   end
+  
+  def self.PostCategories(name)
+    @categories ||= Genre.all
+    @categories.each do |category|
+      return category if category.name == name
+    end
+    nil
+  end
 end

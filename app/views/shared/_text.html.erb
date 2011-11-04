@@ -1,0 +1,8 @@
+<div class="section well post_text">
+  <% unless post.title.blank? %>
+    <h2><%= post.show_title %></h2>
+  <% end %>
+  <p><%= raw post.body_view %>
+  </p>
+  <%= render :partial => "shared/meta", :locals => {:post => post} %>
+  <!--/section--></div>

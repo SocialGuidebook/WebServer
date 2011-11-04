@@ -33,6 +33,10 @@ class I18nLocaleGenerator < Rails::Generators::NamedBase
   end
 
   def fetch_from_rails_i18n_repository
+    if File.exist? "config/locales/#{locale_name}.yml"
+      log "Already exist #{locale_name}.yml."
+      return true
+    end
     log "fetching #{locale_name}.yml from rails-i18n repository..."
     begin
       get "https://github.com/svenfuchs/rails-i18n/raw/master/rails/locale/#{locale_name}.yml", "config/locales/#{locale_name}.yml"

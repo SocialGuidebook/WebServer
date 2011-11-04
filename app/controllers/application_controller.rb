@@ -4,9 +4,18 @@ class ApplicationController < ActionController::Base
   
   before_filter :session_to_user
   before_filter :set_locale
+  layout :layout_by_resource
+  
+  def layout_by_resource
+    if devise_controller?
+      "userview"
+    else
+      "application"
+    end
+  end
   
   def set_locale
-    I18n.locale = extract_locale_from_subdomain
+    I18n.locale = extract_locale_from_subdomain || :en
   end
   
   def extract_locale_from_subdomain

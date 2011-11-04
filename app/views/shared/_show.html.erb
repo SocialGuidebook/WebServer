@@ -7,68 +7,45 @@
     <!--/frontpage_header--></div>
   <div class="frontpage clearfix">
     <div class="main">
+      <div class="post_text floating clearfix post_form text">
+        <%= render :partial => "shared/form_text" %>
+      </div>
+      <!--
       <div class="submenu">
         <ul class="browse clearfix">
-          <li class="b00">絞り込み</li>
-          <li class="b01"><a href="#">テキスト</a></li>
-          <li class="b02"><a href="#">画像</a></li>
-          <li class="b03"><a href="#">動画</a></li>
-          <li class="b04"><a href="#">リンク</a></li>
-          <li class="b05"><a href="#">引用</a></li>
-          <li class="b06"><a href="#">レビュー</a></li>
-          <li class="b07"><a href="#">質問</a></li>
-          <!--/browse--></ul>
-        <!--/submenu--></div>
-      <span id="posts"></span>
-      <% if page.page? %>
-        <% page.pages.all(:order => "total_count desc").each do |page| %>
-          <%= render :partial => "shared/page", :locals => {:page => page} %>
+          <li class="b00"><%= t :filter, :scope => :page %></li>
+          <li class="b01"><%= link_to t(:text, :scope => :post_type), page_path(:post_type_id => PostType::Text.id), :remote => true %></li>
+          <li class="b02"><%= link_to t(:text, :scope => :post_type), page_path(:post_type_id => PostType::Album.id), :remote => true %></li>
+          <li class="b03"><%= link_to t(:text, :scope => :post_type), page_path(:post_type_id => PostType::Video.id), :remote => true %></li>
+          </ul>
+        </div>
+      -->
+      <span id="posts_list">
+        <div id="spin" style="display:none"></div>
+        <span id="posts"></span>
+        <% if page.page? %>
+          <% page.pages.all(:order => "total_count desc").each do |page| %>
+            <%= render :partial => "shared/page", :locals => {:page => page} %>
+          <% end %>
         <% end %>
-      <% end %>
-      <% if posts.count > 0 %>
-        <% posts.each do |post| %>
-          <%= render :partial => "shared/#{post.post_type.name.downcase}", :locals => {:post => post} %>
+        <% if posts.count > 0 %>
+          <%= render :partial => "shared/posts", :locals => {:posts => posts} %>
+          <% if post_page? %>
+            <div id="comment-list">
+              <%= render :partial => 'shared/comments', :locals => {:comments => @post.comments} %>
+            </div>
+            <div id="comment-form">
+              <%= form_for Post.new, :url => post_comments_path(@post), :remote => true do |f| %>
+                <%= render :partial => "shared/comment_form", :locals => {:f => f} %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-        <% if post_page? %>
-          <div id="comment-list">
-            <%= render :partial => 'shared/comments', :locals => {:comments => @post.comments} %>
-          </div>
-          <div id="comment-form">
-            <%= form_for Post.new, :url => post_comments_path(@post), :remote => true do |f| %>
-              <%= render :partial => "shared/comment_form", :locals => {:f => f} %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
+      </span>
       <!--/main--></div>
 
     <div class="side">
       <div class="section well">
-        <p class="btn_follow"><a href="#">フォローする</a></p>
-        <div class="column">
-          <h3 class="title">記事を追加</h3>
-          <ul class="side_addpost clearfix">
-            <li class="sadd01">
-              <a href="#" class="show_post_form" data-label="text" data-post-type="<%= PostType::Text.id %>">Add text</a>
-            </li>
-            <li class="sadd02">
-              <a href="#" class="show_post_form" data-label="photo" data-height="450px" data-post-type="<%= PostType::Album.id %>">Add photos</a>
-            </li>
-            <li class="sadd03">
-              <a href="#" class="show_post_form" data-label="video" data-post-type="<%= PostType::Video.id %>">Add video</a>
-            </li>
-            <li class="sadd04"><a href="#">リンクを追加</a></li>
-            <li class="sadd05"><a href="#">引用を追加</a></li>
-            <!--/side_addpost--></ul>
-          <ul class="side_addpost2 clearfix">
-            <li class="sadd06"><a href="#">レビュー</a></li>
-            <li class="sadd07"><a href="#">質問する</a></li>
-            <!--/side_addpost2--></ul>
-          <!--/column--></div>
-      </div>
-
-      <div class="section well">
-        
         <div class="column clear photo_g">
           <% if @page.main_photo_path(root_url) %>
             <%= link_to image_tag(@page.main_photo_path(root_url)), page_path(@page) %>
@@ -83,6 +60,7 @@
             <li><a href="#"><img src="http://placehold.it/47x47" /></a></li>
           </ul>
           <!--/column--></div>
+        <p class="btn_follow"><a href="#">フォローする</a></p>
         <% if @page.admin?(current_user) %>
           <div class="column side_follower">
             <ul class="clearfix">
@@ -103,20 +81,27 @@
         <div class="column side_category">
           <h3 class="title">カテゴリ</h3>
           <ul class="clearfix">
-            <li class="scat01"><a href="#">泊まる</a></li>
-            <li class="scat02"><a href="#">遊ぶ</a></li>
-            <li class="scat03"><a href="#">食べる</a></li>
-            <li class="scat04"><a href="#">買う</a></li>
-            <li class="scat05"><a href="#">イベント</a></li>
-            <li class="scat06"><a href="#">アクセス</a></li>
-            <li class="scat07"><a href="#">ツアー</a></li>
-            <li class="scat08"><a href="#">交通</a></li>
+            <li class="scat01"><a href="#">Stay</a></li>
+            <li class="scat02"><a href="#">Activity</a></li>
+            <li class="scat03"><a href="#">Food</a></li>
+            <li class="scat04"><a href="#">Shopping</a></li>
+            <li class="scat05"><a href="#">Event</a></li>
+            <li class="scat06"><a href="#">Access</a></li>
+            <li class="scat07"><a href="#">Tour</a></li>
+            <li class="scat08"><a href="#">Traffic</a></li>
           </ul>
           <!--/column--></div>
         <div class="column map">
-          <h3 class="title">近くの施設</h3>
+          <h3 class="title"><%= t :map, :scope => :page %></h3>
           <p class="gmap">
-            <iframe width="250" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.jp/maps?f=q&amp;source=s_q&amp;hl=ja&amp;geocode=&amp;q=%E6%9D%B1%E4%BA%AC%E3%82%BF%E3%83%AF%E3%83%BC&amp;aq=&amp;sll=34.718476,137.851639&amp;sspn=0.440791,0.460052&amp;vpsrc=6&amp;brcurrent=3,0x60188bbbb41922f3:0x33ebfd75f2f06cac,0&amp;ie=UTF8&amp;hq=%E6%9D%B1%E4%BA%AC%E3%82%BF%E3%83%AF%E3%83%BC&amp;t=m&amp;ll=35.659877,139.745235&amp;spn=0.017434,0.021372&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.co.jp/maps?f=q&amp;source=embed&amp;hl=ja&amp;geocode=&amp;q=%E6%9D%B1%E4%BA%AC%E3%82%BF%E3%83%AF%E3%83%BC&amp;aq=&amp;sll=34.718476,137.851639&amp;sspn=0.440791,0.460052&amp;vpsrc=6&amp;brcurrent=3,0x60188bbbb41922f3:0x33ebfd75f2f06cac,0&amp;ie=UTF8&amp;hq=%E6%9D%B1%E4%BA%AC%E3%82%BF%E3%83%AF%E3%83%BC&amp;t=m&amp;ll=35.659877,139.745235&amp;spn=0.017434,0.021372&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">大きな地図で見る</a></small>
+            <%= javascript_include_tag "https://www.google.com/jsapi?key=#{get_google_loader_key}" %>
+            <script type="text/coffeescript">
+              $ ->
+                if google.loader.ClientLocation && google.loader.ClientLocation.address && google.loader.ClientLocation.address.country
+                  $('#page_country').val google.loader.ClientLocation.address.country
+            </script>
+            <%= raw(GMap.header(:host => request.host)) %>
+            <%= raw(@page.map(:draggable => false).to_html) %> <%= raw(@page.map.div(:width => 250, :height => 250)) %>
           </p>
           <!--/column--></div>
         <div class="column other">
@@ -131,26 +116,7 @@
     <!--/admin_set_account--></div>
   <!--/contents--></div>
 <script type="text/coffeescript">
-  $ -> 
-    $(".open_options").click ->
-      $(".option_fields").show()
-      $(".post_form").colorbox.resize()
 </script>
-
-<div class="box" style="display:none">
-  <span id="new_form">
-    <div class="post_text floating clearfix post_form text">
-      <%= render :partial => "shared/form_text" %>
-    </div>
-    <div class="post_form video post_mov floating clearfix">
-      <%= render :partial => "shared/form_video" %>
-    </div>
-    <span class="post_form photo">
-      <%= render :partial => "shared/form_album" %>
-    </span>
-  </span>
-</div>
-
 
 <script type="text/javascript">
   $(function(){
@@ -194,19 +160,25 @@
     $('.swfupload-control')
         .bind('fileQueued', function(event, file){
             // start the upload once a file is queued
+            
+            $('.photo_uploader').css({"visibility": "hidden", top: "0px", height: "0px", left: "0px", width: "0px"});
             $(this).swfupload('startUpload');
         })
         .bind('uploadComplete', function(event, file){
             uploaded_files += 1;
-            $("#upload-status").text(uploaded_files+"/"+upload_files+" files upload");
+            $("#upload-status dd").text(uploaded_files+"/"+upload_files+" files upload");
             // start the upload (if more queued) once an upload is complete
+            if (uploaded_files == upload_files) {
+              $("#upload-status dd").text("Upload completed");
+              $(".add_photo").colorbox.resize();
+            }else{
+            }
             $(this).swfupload('startUpload');
         })
         .bind('fileDialogComplete', function(event, numFilesSelected, numFilesQueued) {
           $('.attach_description').show();
-          // $('.swfupload-control').hide();
           upload_files = numFilesSelected;
-          $("#upload-status").text("0/"+numFilesSelected+" files upload");
+          $("#upload-status dd").text("0/"+numFilesSelected+" files upload");
           $(this).swfupload('startUpload');
           // $(".add_photo").colorbox.resize();
         });
